@@ -97,6 +97,12 @@ gp() {                              # Create git project directory and first com
 # general
 #==============
 
+col() {
+    echo -e "\033[1;31m$1\033[m"
+}
+
+
+
 path() {                            # show path env data in a nice format
     perl -E ' $data = $ARGV[0]; $data =~ s/:/\n/g; say $data; ' $(echo $PATH)
 }
@@ -114,7 +120,7 @@ functions() {                       # ls my bash functions
     perl -nE ' print  if /^\w+\s*\(/;  ' $HOME/.bash_custom/global_functions.bash
 }
 
-tree() {                            # tree output in color
+otree() {                            # tree output in color
     /usr/local/bin/tree -C $@ | less -R
 }
 

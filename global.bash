@@ -2,38 +2,20 @@
 
 ##--------------------------------------------------
 ##
-##
-##
 ## GLOBAL BASH SETTINGS  --- DO NOT STORE PERSONAL SETTINGS IN HERE
 ##
-##
-##
 ##--------------------------------------------------
+
+#DEBUG=1
+if [ "$DEBUG" == "1" ]; then
+    echo "loading global bash settings"
+fi
 
 ##--------------------------------------------------
 #
-# SOME BASICS FIRST
+# SOME VITAL ELEMENTS FIRST
 #
 ##--------------------------------------------------
-
-
-# ENV Vars
-export TERM="xterm-256color"
-
-# vim
-alias   vimrc="vim $HOME/.vimrc "
-alias  bundle="cd $HOME/.vim/bundle; ll "
-alias      vi="vim $@"
-
-
-# bash
-alias ll="clear; pwd; ls -lG "
-alias ls="clear; pwd; ls -G "
-alias la="clear; pwd; ls -alG "
-alias env='env | sort '
-
-
-# shortcuts to edit custom bash files
 MYBASH="$HOME/.bash_custom"
 GB="$MYBASH/global.bash"
 GF="$MYBASH/global_functions.bash"
@@ -44,48 +26,58 @@ alias  gfunc=" vi $GF; . $GF "
 alias  lbash=" vi $LB; . $LB "
 alias  lfunc=" vi $LF; . $LF "
 
-
-
-
-# normal prompt
-export PS1="\[\e[0;31m\]\u@\h:\[\e[0;32m\]\W\[\e[0;34m\]\[\e[00m\]$"
-
-##--------------------------------------------------
-#
-# IMPORT OTHER SCRIPTS
-#
-##--------------------------------------------------
-
-#export DEBUG=1
-
 if [ -s "$GF" ]; then
-    source $GF              # GLOBAL BASH FUNCTIONS
+    # source global functions
+    source $GF
 
     # git prompt
     export PS1="\[\e[0;31m\]\u@\h:\[\e[0;32m\]\W\[\e[0;34m\]\$(git_parse_branch)\[\e[00m\]$"
-fi
 
-if [ "$DEBUG" == "1" ]; then
-    echo "loading global bash settings"
+else 
+    # warn we cannot find global functions
+    echo "Cannot find $GF"
+
+    # normal prompt
+    export PS1="\[\e[0;31m\]\u@\h:\[\e[0;32m\]\W\[\e[0;34m\]\[\e[00m\]$"
 fi
 
 
 ##--------------------------------------------------
-##
-##
+#
+# SOME BASICS FIRST
+#
+##--------------------------------------------------
+
+# ENV Vars
+export TERM="xterm-256color"
+
+# vim
+alias      vimrc="vim $HOME/.vimrc "
+alias  vimbundle="showdir $HOME/.vim/bundle $@ "
+alias         vi="vim $@"
+
+# bash
+alias ll="clear; pwd; ls -lG "
+alias ls="clear; pwd; ls -G "
+alias la="clear; pwd; ls -alG "
+alias env='env | sort '
+
+alias ack='ack -a '
+
+## Open urls with command line
+alias chrome="open -a 'Google Chrome.app' $@"
+alias safari="open -a safari $@"
+
+
+##--------------------------------------------------
 ##
 ## APP SPECIFIC
-##
-##
 ##
 ##--------------------------------------------------
 
 
 # git
 alias gc='vi ~/.gitconfig'
-
-# tree
-alias otree='/usr/local/bin/tree'
 
 #nginx
 alias nginx_conf="vi /usr/local/etc/nginx/nginx.conf"
