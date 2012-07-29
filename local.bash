@@ -31,10 +31,10 @@
 ## VARS TO MAKE THINGS EASIER
 ##-------------------------
 
-    MY_DEV=~/dev
     MY_LIB=~/dev/lib
     MY_CODE=~/dev/code
     exp=$MY_CODE/code-experiments
+    proj=$MY_CODE/code-projects
     review=$MY_CODE/code-review
 
 
@@ -95,14 +95,38 @@
 
 
 ##-------------------------
-## APPS
+## APP CONFIG
 ##-------------------------
 
-    ##
+    ##---------------------------------------------------
     ## HOMEBREW
+    ##---------------------------------------------------
     ##
     # Needs /usr/local/bin in the PATH
     # TODO add a test to warn if not correct
+
+    ##---------------------------------------------------
+    ## notes - an app to view my markup docs
+    ## hosted locally only
+    ##---------------------------------------------------
+
+        # setup env var
+        pages="$MY_CODE/apps/notes/pages"
+
+        # open folder and site
+        alias notes=" promptweb http://notes.dev no; cd $pages; tree "
+        alias pages=" cd $pages; tree "
+
+        # function to edit doc using a partial name
+        nedit() {
+            file=`find $pages -type f | grep $1 | head -1 `
+            if [[ -f "$file" ]]; then
+                vi $file
+            else
+                cmd="use Frank::Nedit qw(:all); create_contentious_note();"
+                vi $( perl -e "$cmd" $1 )
+            fi
+        }
 
 
 ##-------------------------
@@ -110,64 +134,58 @@
 ##-------------------------
 
     ##---------------------------------------------------
-    ## www.marylinfashion.com - Mary's business website
+    ## Setup all projects represented in the pow directories
+    ## ~/.pow and ~/.pow/apps
+    ## an alias is created that will open the dir and the web page
+    ##---------------------------------------------------
+        setup_projects() {
+            for f in ~/.pow/*
+            do
+                [ -L $f ] || continue   # skip unless symlink
+                local name=${f##*/}
+                local path=$(pwd -L $f)
+                unalias $name > /dev/null 2>&1
+                alias $name="promptweb http://$name.dev no && cd $path && ll"
+            done
+        }
+        setup_projects
+
+
+##-------------------------
+## HOST SHORTCUTS
+##-------------------------
+
+    ##---------------------------------------------------
+    ## dearfrankg.com aka marylinfashion.com
     ## hosted at amazon web services EC2
     ##---------------------------------------------------
-
-        # login as root user
+        # ssh $awsroot -- login as root
         awsroot=" -i /Users/frankg/.ssh/web-server-key.pem ubuntu@184.169.146.13"
 
-        # login as frankg
+        # ssh $aws -- login as frankg
         aws="frankg@dearfrankg.com"
-
-        # open folder and site
-        alias mfd="chrome http://mfd.dev; showdir $MY_CODE/code-projects/mfd/public ; ll"
-
-
-    ##---------------------------------------------------
-    ## msite - Movie Website Project
-    ## hosted at amazon web services EC2
-    ##---------------------------------------------------
-
-        # open folder and site
-        alias msite="chrome http://msite.dev; cd $MY_CODE/code-projects/msite/public ; ll"
-
-
-    ##---------------------------------------------------
-    ## notes - an app to view my markup docs
-    ## hosted locally only
-    ##---------------------------------------------------
-
-        # open folder and site
-        alias notes=" chrome http://notes.dev; cd $MY_CODE/apps/notes/pages ; tree "
-
-        # function to edit doc using a partial name
-        nedit() {
-            file=`find $pages -type f | grep $1 | head -1 `
-            [[ -f "$file" ]] && vi "$file"
-        }
-
-
-    ##---------------------------------------------------
-    ## fboot - design gallery website
-    ## hosted locally only
-    ##---------------------------------------------------
-
-        # open folder and site
-        alias fboot="chrome http://fboot.dev; cd $MY_CODE/code-projects/fboot/public ; ll"
-
-
-
-
-
-
-
-
 
 
 ##-------------------------
 ## SHORTCUTS
 ##-------------------------
+
+    ##-------------------------
+    ## KEY DIRECTORIES
+    ##-------------------------
+
+    alias          pow="showdir ~/.pow"
+    alias           bp="showdir $exp/skills/bp-tut"
+
+    alias          dev="showdir $MY_CODE/.."
+    alias         apps="showdir $MY_CODE/apps"
+    alias         code="showdir $MY_CODE"
+    alias       review="showdir $review"
+    alias          exp="showdir $exp"
+    alias         proj="showdir $proj"
+    alias           hm='showdir ~ '
+    alias    downloads='showdir ~/Downloads '
+
 
     ##-------------------------
     ## SHORTCUTS
@@ -182,18 +200,6 @@
     alias      sysls='sudo launchctl list | grep -v "apple" | grep -v "chrome" | sort'
     alias        ngx='sudo vi /usr/local/etc/nginx/nginx.conf'
 
-
-    ##-------------------------
-    ## KEY DIRECTORIES
-    ##-------------------------
-
-    alias          dev="showdir $MY_DEV"
-    alias         apps="showdir $MY_CODE/apps"
-    alias         code="showdir $MY_CODE"
-    alias       review="showdir $review"
-    alias          exp="showdir $exp"
-    alias           hm='showdir ~ '
-    alias    downloads='showdir ~/Downloads '
 
 
 #----------------------------------

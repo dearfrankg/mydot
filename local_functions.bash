@@ -33,6 +33,9 @@ fg_prepend_file() {
 ##
 ##---------------------------------------------------------------------------
 
+get_json() {
+    curl -s $1 | json_xs
+}
 
 install_theme() {                   # install octopress theme
     ##
@@ -50,44 +53,30 @@ install_theme() {                   # install octopress theme
 }
 
 
-prompt() {                          # prompt for response get answer in $RESPONSE
-    ##
-    ## PROMPT FOR A RESPONSE PUTTING THE RESULT IN $RESPONSE ENV VAR
-    ##
+promptweb() {
+    yesno "Open web page $1" $2 && chrome $1
+}
+
+yesno() {                          # prompt return true or false
+    if [ "$2" == "" ]; then
+        prompt "$1 y/n? [y]"
+        case $RESPONSE in
+            n|N|no|NO)  return 1 ;;
+            *)          return 0 ;;
+        esac
+    else
+        prompt "$1 y/n? [n]"
+        case $RESPONSE in
+            y|Y|yes|YES)  return 0 ;;
+            *)            return 1 ;;
+        esac
+    fi
+}
+
+prompt() {                          # prompt return $RESPONSE
     RESPONSE=""
     echo $1
     read a
     RESPONSE="$a"
 }
-
-#rm() {                      # removed fies will be moved to /tmp/trash
-#    # make sure the trash dir exists
-#    if [ ! -d /tmp/trash ]; then
-#        echo "creating /tmp/trash"
-#        mkdir /tmp/trash
-#    fi
-
-#    # gulp the -f or -rf option
-#    if [ "$1" == "-f" -o "$1" == "-rf" ]; then
-#        shift
-#    fi
-
-
-#while (( "$#" )); do
-
-#    # show and execute the command
-#    /bin/rm -rf /tmp/trash/$1
-#    cmd="mv $1 /tmp/trash"
-#    echo $cmd
-#    eval $cmd
-
-#    shift
-
-#done
-
-
-#}
-
-
-
 

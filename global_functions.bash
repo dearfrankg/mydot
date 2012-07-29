@@ -97,6 +97,17 @@ gp() {                              # Create git project directory and first com
 # general
 #==============
 
+finder() { 
+    if [[ "$1" ]]; then 
+        open -a finder $1
+    else 
+        open -a finder $(pwd)
+    fi
+
+}
+
+
+
 col() {
     echo -e "\033[1;31m$1\033[m"
 }
