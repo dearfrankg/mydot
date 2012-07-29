@@ -143,9 +143,10 @@
             do
                 [ -L $f ] || continue   # skip unless symlink
                 local name=${f##*/}
-                local path=$(pwd -L $f)
+                local path=$(readlink $f)
+                echo $name $path
                 unalias $name > /dev/null 2>&1
-                alias $name="promptweb http://$name.dev no && cd $path && ll"
+                alias $name="promptweb http://$name.dev no; cd $path && ll"
             done
         }
         setup_projects
