@@ -139,12 +139,11 @@
     ## an alias is created that will open the dir and the web page
     ##---------------------------------------------------
         setup_projects() {
-            for f in ~/.pow/*
+            for f in ~/.pow/* ~/.pow/apps/*
             do
                 [ -L $f ] || continue   # skip unless symlink
                 local name=${f##*/}
                 local path=$(readlink $f)
-                echo $name $path
                 unalias $name > /dev/null 2>&1
                 alias $name="promptweb http://$name.dev no; cd $path && ll"
             done

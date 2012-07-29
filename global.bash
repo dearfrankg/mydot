@@ -21,10 +21,11 @@ GB="$MYBASH/global.bash"
 GF="$MYBASH/global_functions.bash"
 LB="$MYBASH/local.bash"
 LF="$MYBASH/local_functions.bash"
-alias  gbash=" vi $GB; . $GB "
-alias  gfunc=" vi $GF; . $GF "
-alias  lbash=" vi $LB; . $LB "
-alias  lfunc=" vi $LF; . $LF "
+BASH_GIT_SAVE="git --git-dir $HOME/.bash_custom/.git --work-tree $HOME/.bash_custom "
+alias  gbash=" vi $GB; . $GB; $BASH_GIT_SAVE "
+alias  gfunc=" vi $GF; . $GF; $BASH_GIT_SAVE "
+alias  lbash=" vi $LB; . $LB; $BASH_GIT_SAVE "
+alias  lfunc=" vi $LF; . $LF; $BASH_GIT_SAVE "
 
 if [ -s "$GF" ]; then
     # source global functions
