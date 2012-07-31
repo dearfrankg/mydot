@@ -157,7 +157,8 @@
                 local name=${f##*/}
                 local path=$(readlink $f)
                 local server="$path/$name-server"
-                echo $server $( [ -f $server ] && "yes" )
+                echo "starting $server ..."
+                [ -f $server ] && cd $path && $server
             done
             
         }
