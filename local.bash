@@ -158,7 +158,7 @@
                 local path=$(readlink $f)
                 local server="$path/$name-server"
                 echo "starting $server ..."
-                [ -f $server ] && cd $path && $server
+                [ -f $server ] && cd $path && $server &
             done
             
         }
