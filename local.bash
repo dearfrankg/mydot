@@ -150,6 +150,18 @@
         }
         setup_projects
 
+        start_apps() {
+            for f in ~/.pow/apps/*
+            do
+                [ -L $f ] || continue   # skip unless symlink
+                local name=${f##*/}
+                local path=$(readlink $f)
+                local server="$path/$name"
+                echo $server
+            done
+            
+        }
+
 
 ##-------------------------
 ## HOST SHORTCUTS
