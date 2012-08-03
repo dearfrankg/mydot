@@ -27,9 +27,9 @@
 
     MY_LIB=~/dev/lib
     MY_CODE=~/dev/code
-    exp=$MY_CODE/code-experiments
-    proj=$MY_CODE/code-projects
-    review=$MY_CODE/code-review
+    exp=$MY_CODE/experiments
+    proj=$MY_CODE/projects
+    review=$MY_CODE/review
 
 
 ##-------------------------
@@ -111,7 +111,7 @@
     ##---------------------------------------------------
 
         # setup env var
-        pages="$MY_CODE/apps/notes/pages"
+        pages="$MY_CODE/projects/notes/pages"
 
         # open folder and site
         alias notes=" promptweb http://notes.dev no; cd $pages; tree "
@@ -187,15 +187,13 @@
     ##-------------------------
 
     alias          pow="showdir ~/.pow"
-    alias           bp="showdir $exp/skills/bp-tut"
 
+    alias           hm='showdir ~ '
     alias          dev="showdir $MY_CODE/.."
-    alias         apps="showdir $MY_CODE/apps"
     alias         code="showdir $MY_CODE"
-    alias       review="showdir $review"
     alias          exp="showdir $exp"
     alias         proj="showdir $proj"
-    alias           hm='showdir ~ '
+    alias       review="showdir $review"
     alias    downloads='showdir ~/Downloads '
 
 
