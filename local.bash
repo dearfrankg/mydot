@@ -91,7 +91,7 @@
 ## PATH
 ##-------------------------
 
-    export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:$PATH"
+    export PATH="$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin"
     export PATH="~/dev/bin:$PATH"
 
 ##-------------------------
