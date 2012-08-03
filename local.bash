@@ -19,12 +19,6 @@
         echo "loading local bash settings"
     fi
 
-##-------------------------
-## PATH
-##-------------------------
-
-    export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin"
-    export PATH="~/dev/bin:$PATH"
 
 
 ##-------------------------
@@ -93,6 +87,12 @@
 
     fi
 
+##-------------------------
+## PATH
+##-------------------------
+
+    export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:$PATH"
+    export PATH="~/dev/bin:$PATH"
 
 ##-------------------------
 ## APP CONFIG
