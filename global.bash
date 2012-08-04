@@ -53,15 +53,16 @@ fi
 export TERM="xterm-256color"
 
 # vim
+alias         vi="mvim -v $@"
+alias        vim="mvim -v $@"
 alias      vimrc="vim $HOME/.vimrc "
 alias  vimbundle="showdir $HOME/.vim/bundle $@ "
-alias         vi="vim $@"
 
 # bash
 alias ll="clear; pwd; ls -lG "
 alias ls="clear; pwd; ls -G "
 alias la="clear; pwd; ls -alG "
-alias env='env | sort '
+alias env='env | sort  '
 
 alias ack='ack -a '
 
