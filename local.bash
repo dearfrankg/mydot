@@ -194,6 +194,7 @@
     alias          exp="showdir $exp"
     alias         proj="showdir $proj"
     alias       review="showdir $review"
+    alias       skills="showdir $MY_CODE/skills"
     alias    downloads='showdir ~/Downloads '
 
 
