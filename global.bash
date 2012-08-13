@@ -18,25 +18,40 @@ fi
 ##--------------------------------------------------
 MYBASH="$HOME/.bash_custom"
 GB="$MYBASH/global.bash"
-GF="$MYBASH/global_functions.bash"
 LB="$MYBASH/local.bash"
-LF="$MYBASH/local_functions.bash"
-BASH_GIT_SAVE="git --git-dir $HOME/.bash_custom/.git --work-tree $HOME/.bash_custom commit -am 'autosave'"
-alias  gbash=" vi $GB; . $GB; $BASH_GIT_SAVE "
-alias  gfunc=" vi $GF; . $GF; $BASH_GIT_SAVE "
-alias  lbash=" vi $LB; . $LB; $BASH_GIT_SAVE "
-alias  lfunc=" vi $LF; . $LF; $BASH_GIT_SAVE "
 
-if [ -s "$GF" ]; then
-    # source global functions
-    source $GF
+
+##--------------------------------------------------
+## install additional functions from the plugins directory
+##--------------------------------------------------
+load_plugins() {
+    for p in $MYBASH/plugins/*.global.bash
+    do
+        # source the plugin
+        . $p
+    done
+}
+
+##--------------------------------------------------
+#
+# SOME VITAL ELEMENTS FIRST
+#
+##--------------------------------------------------
+BASH_GIT_SAVE="save_repo_changes $MYBASH"
+
+# aliases to edit bash config
+alias  gbash=" vi $GB; . $GB; $BASH_GIT_SAVE "
+alias  lbash=" vi $LB; . $LB; $BASH_GIT_SAVE "
+
+if [ 1 == 1 ]; then
+
+    # load global functions
+    load_plugins
 
     # git prompt
     export PS1="\[\e[0;31m\]\u@\h:\[\e[0;32m\]\W\[\e[0;34m\]\$(git_parse_branch)\[\e[00m\]$"
 
-else 
-    # warn we cannot find global functions
-    echo "Cannot find $GF"
+else
 
     # normal prompt
     export PS1="\[\e[0;31m\]\u@\h:\[\e[0;32m\]\W\[\e[0;34m\]\[\e[00m\]$"

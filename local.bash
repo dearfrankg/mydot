@@ -13,8 +13,6 @@
 ## GET LOCAL FUNCTIONS
 ##-------------------------
 
-    source "/Users/frankg/.bash_custom/local_functions.bash"
-
     if [ "$DEBUG" == "1" ]; then
         echo "loading local bash settings"
     fi
