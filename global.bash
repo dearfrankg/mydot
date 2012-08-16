@@ -12,60 +12,12 @@ if [ "$DEBUG" == "1" ]; then
 fi
 
 ##--------------------------------------------------
-#
-# SOME VITAL ELEMENTS FIRST
-#
+# Some key items before we get started
 ##--------------------------------------------------
+export TERM="xterm-256color"
 MYBASH="$HOME/.bash_custom"
 GB="$MYBASH/global.bash"
 LB="$MYBASH/local.bash"
-
-
-##--------------------------------------------------
-## install additional functions from the plugins directory
-##--------------------------------------------------
-load_plugins() {
-    for p in $MYBASH/plugins/*.global.bash
-    do
-        # source the plugin
-        . $p
-    done
-}
-
-##--------------------------------------------------
-#
-# SOME VITAL ELEMENTS FIRST
-#
-##--------------------------------------------------
-BASH_GIT_SAVE="save_repo_changes $MYBASH"
-
-# aliases to edit bash config
-alias  gbash=" vi $GB; . $GB; $BASH_GIT_SAVE "
-alias  lbash=" vi $LB; . $LB; $BASH_GIT_SAVE "
-
-if [ 1 == 1 ]; then
-
-    # load global functions
-    load_plugins
-
-    # git prompt
-    export PS1="\[\e[0;31m\]\u@\h:\[\e[0;32m\]\W\[\e[0;34m\]\$(git_parse_branch)\[\e[00m\]$"
-
-else
-
-    # normal prompt
-    export PS1="\[\e[0;31m\]\u@\h:\[\e[0;32m\]\W\[\e[0;34m\]\[\e[00m\]$"
-fi
-
-
-##--------------------------------------------------
-#
-# SOME BASICS FIRST
-#
-##--------------------------------------------------
-
-# ENV Vars
-export TERM="xterm-256color"
 
 # vim
 alias         vi="mvim -v $@"
@@ -87,6 +39,40 @@ alias safari="open -a safari $@"
 
 
 ##--------------------------------------------------
+## Define function load_plugins()
+##--------------------------------------------------
+load_plugins() {
+    for p in $MYBASH/plugins/*.global.bash
+    do
+        # source the plugin
+        . $p
+    done
+}
+
+##--------------------------------------------------
+# aliases to edit bash config
+##--------------------------------------------------
+alias  gbash=" vi $GB; . $GB; save_repo_changes $MYBASH "
+alias  lbash=" vi $LB; . $LB; save_repo_changes $MYBASH "
+
+if [ 1 == 1 ]; then
+
+    # exec load_plugins() function
+    load_plugins
+
+    # git prompt
+    export PS1="\[\e[0;31m\]\u@\h:\[\e[0;32m\]\W\[\e[0;34m\]\$(git_parse_branch)\[\e[00m\]$"
+
+else
+
+    # normal prompt
+    export PS1="\[\e[0;31m\]\u@\h:\[\e[0;32m\]\W\[\e[0;34m\]\[\e[00m\]$"
+fi
+
+
+
+
+##--------------------------------------------------
 ##
 ## APP SPECIFIC
 ##
@@ -98,9 +84,6 @@ alias gc='vi ~/.gitconfig'
 
 #nginx
 alias nginx_conf="vi /usr/local/etc/nginx/nginx.conf"
-
-
-
 
 #---------------------------------------------
 # IF REDHAT OS THEN DO THIS STUFF

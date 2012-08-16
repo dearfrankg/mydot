@@ -108,6 +108,7 @@
     ## hosted locally only
     ##---------------------------------------------------
 
+
         # setup env var
         pages="$MY_CODE/projects/notes/pages"
 
