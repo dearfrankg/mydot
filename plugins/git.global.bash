@@ -99,6 +99,17 @@ show_tag() {
 }
 
 #-------------------------------------------------------------------------
+# seed angular project
+#-------------------------------------------------------------------------
+ang_seed() {
+  local proj=$1
+  [[ ! "$proj" ]] && echo "need the name of the seed project" && return
+  git clone -q "$review/angular-seed" "$proj"
+  cd $proj
+  ll
+}
+
+#-------------------------------------------------------------------------
 # clone remote git repo and cd into the directory
 #-------------------------------------------------------------------------
 git_clone() {

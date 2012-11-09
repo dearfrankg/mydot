@@ -23,8 +23,8 @@
 ## VARS TO MAKE THINGS EASIER
 ##-------------------------
 
-    MY_LIB=~/dev/lib
-    MY_CODE=~/dev/code
+    MY_LIB=$HOME/dev/lib
+    MY_CODE=$HOME/dev/code
     exp=$MY_CODE/experiments
     proj=$MY_CODE/projects
     review=$MY_CODE/review
@@ -59,7 +59,7 @@
         ## RUBY + RVM
         ##
         [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-        rvm use 1.9.2 2>&1 > /dev/null
+        rvm use 1.9.3 2>&1 > /dev/null
 
 
         ##
@@ -81,7 +81,7 @@
         ##
         ## REPORT VERSIONS AT STARTUP
         ##
-        fg_versions    # function call
+        # fg_versions    # function call
 
     fi
 
@@ -90,7 +90,7 @@
 ##-------------------------
 
     export PATH="$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin"
-    export PATH="~/dev/bin:$PATH"
+    export PATH="$HOME/dev/bin:$PATH"
 
 ##-------------------------
 ## APP CONFIG
@@ -110,7 +110,7 @@
 
 
         # setup env var
-        pages="$MY_CODE/projects/notes/pages"
+        export pages="$proj/Sites/notes/pages"
 
         # open folder and site
         alias notes=" promptweb http://notes.dev no; cd $pages; tree "
@@ -181,11 +181,23 @@
 ## SHORTCUTS
 ##-------------------------
 
+
+
+    ##-------------------------
+    ## KEY ENV VARS
+    ##-------------------------
+
+    export mongohq_api_key="rl5mbioglwzc5xk04cm5"
+    export mongolab_api_key="503f0450e4b04102cdfdc589"
+
+
     ##-------------------------
     ## KEY DIRECTORIES
     ##-------------------------
 
     alias          pow="showdir ~/.pow"
+
+    alias          met="meteor $@"
 
     alias           hm='showdir ~ '
     alias          dev="showdir $MY_CODE/.."
@@ -200,8 +212,13 @@
     ##-------------------------
     ## SHORTCUTS
     ##-------------------------
+    # heroku 
+    alias         hk="heroku $@"
 
+    # perl
     alias         pd="perldoc"
+
+
     alias         sl="sqlite3 "
     alias  img-optim="open -a ImageOptim $@"
 
