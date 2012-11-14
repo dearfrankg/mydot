@@ -5,17 +5,90 @@
 #
 ########################################################################
 
+
+
+alias cr='create_readme'
 #-------------------------------------------------------------------------
-# Change to the parent directory 
+# make README.md
 #-------------------------------------------------------------------------
-up () { 
+create_readme () {
+  [[ -f "README.md" ]] && echo "file exists." && return
+  echo "$1" > README.md
+}
+
+#-------------------------------------------------------------------------
+# new filter commands
+#-------------------------------------------------------------------------
+alias dg='deep_go'
+alias pg='proj_go'
+
+proj_go () {
+  proj 2>&1 > /dev/null
+  [[ "$1" != "" ]] && deep_go $1
+  splash
+}
+
+deep_go () {
+  for x in 1 2 3 4 5
+  do
+    local cmd="find . -type d -depth $x "
+    local dir=$($cmd | grep "$1" | grep -vP '/\.' | head -n 1 )
+    [[ -d $dir ]] && cd $dir && return
+  done
+  echo "directory [$1] not found"
+}
+
+splash () {
+  for dir in $(get_dirs)
+  do
+    [[ -f $dir/readme.md || -f $dir/README.md ]] && dir_story && return
+  done
+  ll
+}
+
+
+
+
+
+
+
+
+
+
+#-------------------------------------------------------------------------
+# list based on leading digit
+#-------------------------------------------------------------------------
+numeric_sort() {
+    local perl1=' $l=$_; chomp $l; ($num) = $l =~ m/(\d+)/xms; say $num; '
+    local perl2=' $l=$_; chomp $l; if ($l != "") { $cmd="ls $l-*"; system( $cmd); } '
+
+    local list_files="find . -type f  "
+    local map_to_leading_numbers=" perl -n -E '$perl1' "
+    local sort_numerically=" sort -n "
+    local map_to_ls_cmds=" perl -n -E '$perl2'"
+
+    local cmd=" \
+      $list_files | \
+      $map_to_leading_numbers |\
+      $sort_numerically | \
+      $map_to_ls_cmds "
+
+    eval $cmd
+
+}
+
+#-------------------------------------------------------------------------
+# Change to the parent directory
+#-------------------------------------------------------------------------
+up () {
   cd ..
+  splash
 }
 
 #-------------------------------------------------------------------------
 # Make dir and cd into it
 #-------------------------------------------------------------------------
-md () { 
+md () {
   if [[ -d "$1" || -f "$1" ]]; then
      echo "$1 already exists"
      return

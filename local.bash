@@ -212,13 +212,8 @@
     ##-------------------------
     ## SHORTCUTS
     ##-------------------------
-    # heroku 
-    alias         hk="heroku $@"
-
-    # perl
     alias         pd="perldoc"
-
-
+    alias         pf="plackfile "
     alias         sl="sqlite3 "
     alias  img-optim="open -a ImageOptim $@"
 

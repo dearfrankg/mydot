@@ -18,6 +18,7 @@ export TERM="xterm-256color"
 MYBASH="$HOME/.bash_custom"
 GB="$MYBASH/global.bash"
 LB="$MYBASH/local.bash"
+PB="$MYBASH/plugins/util.global.bash"
 
 # vim
 alias         vi="mvim -v $@"
@@ -54,6 +55,7 @@ load_plugins() {
 ##--------------------------------------------------
 alias  gbash=" vi $GB; . $GB; save_repo_changes $MYBASH "
 alias  lbash=" vi $LB; . $LB; save_repo_changes $MYBASH "
+alias  pbash=" vi $PB; . $PB; save_repo_changes $MYBASH "
 
 if [ 1 == 1 ]; then
 
