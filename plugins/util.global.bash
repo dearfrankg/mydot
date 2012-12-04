@@ -18,21 +18,22 @@ create_readme () {
 
 
 #-------------------------------------------------------------------------
-# mdb mongo db execute
+# cache - cache in this case is the mongo db
 #-------------------------------------------------------------------------
-mdb () {
-  if [[ ! "$1" && "$2" ]]; then
-    echo "mdb needs db and query params" && return 0
-  fi
-  echo "executing..."
+cache () {
+
+  local cmd="
+use macbook
+db.gopath.findOne({ path: { \$regex: \".*$1.*\" }}, { _id: 0})
+"
+
+  local result=$( echo "$cmd" | mongo --quiet )
+
+  echo $result
+
+  local regex='([^"]+)"[^"]*$' 
+  [[ $result =~ $regex ]] && echo ${BASH_REMATCH[1]}
 }
-
-
-
-
-
-
-
 
 
 #-------------------------------------------------------------------------
@@ -42,7 +43,8 @@ alias dg='deep_go'
 alias pg='proj_go'
 
 proj_go () {
-  proj 
+  cache $1
+  proj
   [[ "$1" != "" ]] && deep_go $1
   splash
 }
