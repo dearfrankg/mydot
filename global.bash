@@ -1,72 +1,19 @@
 #!/bin/sh
-
 ##--------------------------------------------------
 ##
 ## GLOBAL BASH SETTINGS  --- DO NOT STORE PERSONAL SETTINGS IN HERE
 ##
 ##--------------------------------------------------
 
-#DEBUG=1
-[[ "$DEBUG" == "1" ]] && echo "loading global bash settings"
-
 
 ##--------------------------------------------------
-##
 ## GLOBAL SETTINGS
-##
 ##--------------------------------------------------
 export TERM="xterm-256color"
 
 
 ##--------------------------------------------------
-##
-## GLOBAL EDITING ALIASES
-##
-##--------------------------------------------------
-
-
-# vars pointing to dirs and files
-MYBASH="$HOME/.bash_custom"
-GB="$MYBASH/global.bash"
-LB="$MYBASH/local.bash"
-PB="$MYBASH/plugins/util.global.bash"
-
-
-##--------------------------------------------------
-# aliases to edit bash config
-##--------------------------------------------------
-alias  gbash=" vi $GB; . $GB; save_repo_changes $MYBASH "
-alias  lbash=" vi $LB; . $LB; save_repo_changes $MYBASH "
-alias  pbash=" vi $PB; . $PB; save_repo_changes $MYBASH "
-
-
-##--------------------------------------------------
-## Declare and execute load_plugins()
-##--------------------------------------------------
-load_plugins() {
-    for p in $1
-    do
-        # source the plugin
-        # echo "loading plugin $p"
-        . $p
-    done
-}
-load_plugins "$MYBASH/plugins/*.global.bash"
-
-##--------------------------------------------------
-## Configure prompt
-##--------------------------------------------------
-# git prompt
-export PS1="\[\e[0;31m\]\u@\h:\[\e[0;32m\]\W\[\e[0;34m\]\$(git_parse_branch)\[\e[00m\]$"
-
-# normal prompt
-#export PS1="\[\e[0;31m\]\u@\h:\[\e[0;32m\]\W\[\e[0;34m\]\[\e[00m\]$"
-
-
-##--------------------------------------------------
-##
-## GLOBAL ALIASES
-##
+## KEY ALIASES AND VARIABLES
 ##--------------------------------------------------
 
 # vim
@@ -81,24 +28,36 @@ alias ls="clear; pwd; ls -G "
 alias la="clear; pwd; ls -alG "
 alias env='env | sort  '
 
-# ack
-alias ack='ack -a '
+MYBASH="$HOME/.bash_custom"
+GB="$MYBASH/global.bash"
+LB="$MYBASH/local.bash"
+UB="$MYBASH/util.bash"
+PB="$MYBASH/plugin_system.bash"
 
-## browser open
-alias chrome="open -a 'Google Chrome.app' $@"
-alias safari="open -a safari $@"
 
-# git
-alias gc='vi ~/.gitconfig'
+##--------------------------------------------------
+## UTIITIES 
+##--------------------------------------------------
 
-# grunt
-alias grunt="grunt --no-color "     # solarized bug cause prompt to be invisible in color, so we use the --no-color option 
+source $UB      # load key utilities
 
-# npm 
-alias npm="npm -q"                  # shut up the noisy npm
+##--------------------------------------------------
+## CUSTOM BASH SYSTEM
+##--------------------------------------------------
 
-#nginx
-alias nginx_conf="vi /usr/local/etc/nginx/nginx.conf"
+alias  gbash=" vi $GB; . $GB; save_repo_changes $MYBASH "
+alias  lbash=" vi $LB; . $LB; save_repo_changes $MYBASH "
+alias  ubash=" vi $UB; . $UB; save_repo_changes $MYBASH "
+alias  pbash=" vi $PB; . $PB; save_repo_changes $MYBASH "
+
+
+##--------------------------------------------------
+## PROMPT
+##--------------------------------------------------
+
+isFunction git_parse_branch && 
+export PS1="\[\e[0;31m\]\u@\h:\[\e[0;32m\]\W\[\e[0;34m\]\$(git_parse_branch)\[\e[00m\]$" ||  # git prompt
+export PS1="\[\e[0;31m\]\u@\h:\[\e[0;32m\]\W\[\e[0;34m\]\[\e[00m\]$"                         # normal prompt
 
 
 ##---------------------

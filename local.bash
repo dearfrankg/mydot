@@ -26,6 +26,18 @@
     review=$MY_CODE/review
 
 
+
+##-------------------------
+## LOAD PLUGINS
+##-------------------------
+
+source $PB      # load the plugins
+
+
+
+
+
+
 ##-------------------------
 ## ALIASES
 ##-------------------------
@@ -52,12 +64,6 @@
     alias      sysls='sudo launchctl list | grep -v "apple" | grep -v "chrome" | sort'
     alias        ngx='sudo vi /usr/local/etc/nginx/nginx.conf'
 
-
-##-------------------------
-## LOAD LOCAL PLUGINS
-##-------------------------
-
-    load_plugins "$MYBASH/plugins/*.local.bash"
 
 
 
