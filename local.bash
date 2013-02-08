@@ -11,8 +11,7 @@
 ## SETUP PATH
 ##-------------------------
 
-    export PATH="$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin"
-    export PATH="$HOME/dev/bin:$PATH"
+    export PATH="$PATH:/usr/local/sbin:/usr/X11/bin:$HOME/dev/bin"
 
 
 ##-------------------------
@@ -21,21 +20,8 @@
 
     MY_LIB=$HOME/dev/lib
     MY_CODE=$HOME/dev/code
-    exp=$MY_CODE/experiments
-    proj=$MY_CODE/projects
+    proj=$MY_CODE/lab
     review=$MY_CODE/review
-
-
-
-##-------------------------
-## LOAD PLUGINS
-##-------------------------
-
-source $PB      # load the plugins
-
-
-
-
 
 
 ##-------------------------
@@ -47,7 +33,6 @@ source $PB      # load the plugins
     alias           hm='showdir ~ '
     alias          dev="showdir $MY_CODE/.."
     alias         code="showdir $MY_CODE"
-    alias          exp="showdir $exp"
     alias         proj="showdir $proj"
     alias       review="showdir $review"
     alias       skills="showdir $MY_CODE/skills"
@@ -63,6 +48,13 @@ source $PB      # load the plugins
     alias   get_enyo=" cp -r $MY_LIB/js/bootplate/enyo . "
     alias      sysls='sudo launchctl list | grep -v "apple" | grep -v "chrome" | sort'
     alias        ngx='sudo vi /usr/local/etc/nginx/nginx.conf'
+
+
+##-------------------------
+## LOAD PLUGINS
+##-------------------------
+
+source $PB      # load the plugins
 
 
 

@@ -7,6 +7,18 @@
 
 
 
+
+
+
+
+
+
+alias public-key="cat ~/.ssh/id_rsa.pub"
+alias hosts='sudo vi /private/etc/hosts'
+alias v="version"
+alias sites="showdir ~/Sites"
+
+
 ##    sweep
 ##
 ##    description:
@@ -26,4 +38,8 @@ sweep () {
   mv $desktop/Scree* $dir
 }
 
+version() { 
+  cmd="$1"
+  $cmd --version
+}
 

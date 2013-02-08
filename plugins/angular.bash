@@ -1,13 +1,24 @@
 # angular bash plugin
 
-cap () { 
 
-  local proj="coffee angular project"
+## cap - create angular/coffee project using seed
+##
+cap () {
+
+  # hard coded seed directory -- eeek
   local seed="/Users/frankg/dev/code/projects/lab/JAVASCRIPT/ANGULAR/SEEDS/yeo-simple"
-  [[ "$1" == "" ]] && echo "$proj - cap(): requires project name param" && return
+  local error="cap(): requires a description param - 'name - desc'"
 
-  local cmd="git clone $seed $1"
-  $cmd
-  cd $1
+  # validate params
+  description="$1"
+  name=$(expr "$description" : '\(.*\s*\)-')
+  [[ "$name" == "" || "$description" == "" ]] && echo $error && return
+
+  # clone seed project
+  git clone $seed $name
+  cd $name 
+
+  # create a readme file
+  echo $description > readme.md
 }
 

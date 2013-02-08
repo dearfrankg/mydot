@@ -11,6 +11,9 @@
 ################################################
 
 
+alias pl='plugin_list'
+alias pe='plugin_edit'
+alias pd='plugin_dir'
 
 
 # identify a list of plugins to load
@@ -35,6 +38,20 @@ plugin_load_all() {
   done
 }
 
+## goto plugin directory
+##
+plugin_dir () { 
+  cd $DEFAULT_LIST
+}
+
+
+## list plugins
+##
+plugin_list () { 
+  ll $DEFAULT_LIST
+}
+
+
 ## edit a plugin using fuzzy search
 ##
 plugin_edit() {
@@ -43,10 +60,16 @@ plugin_edit() {
   [[ "$1" == "" ]] && echo "plugin_edit(): requires file_regex param" && return
 
   local file_regex="$1"
+  file=$(fuzzy_find $DEFAULT_LIST $file_regex)
 
-  plugin_fuzzy_find $DEFAULT_LIST $file_regex
+  vi $file; source $file
 
 }
 
+########################################################
+########################################################
+
+#------------------
 # load on start 
+#------------------
 plugin_load_all

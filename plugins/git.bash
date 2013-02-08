@@ -6,6 +6,46 @@
 
 
 
+
+
+# github cli
+
+alias ghrepos="$gh_curl $gh_url | json -a name updated_at"
+
+
+gh_curl="curl -s -u dearfrankg:frankg "
+gh_url=" https://api.github.com/users/dearfrankg/repos "
+
+gh_repos() {
+  cmd=" $gh_curl $gh_url "
+  data=$($cmd | json -a name updated_at )
+  local odd=1
+  for l in $data
+  do
+    if [[ "$odd" == "1" ]]; then
+      odd=0
+      name=$l
+    else
+      odd=1
+      date=$l
+      fdate=$(humanizeDuration $date)
+      printf "%-20s %s\n" "$name" "$fdate"
+    fi
+  done
+
+}
+
+
+
+
+
+
+
+# this is for the hub tool
+alias git=hub
+
+alias gl='git lg'
+
 #-------------------------------------------------------------------------
 # Save repo changes
 #-------------------------------------------------------------------------

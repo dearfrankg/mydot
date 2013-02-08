@@ -9,11 +9,21 @@
 ##  ALIASES
 ##------------------------------------------------------
 alias tt='tab_title'
-alias splash='dir_splash'
+alias splash='dir_story'
 alias up='dir_up'
-alias md='dir_md'
+alias md='dir_into'
+alias bt='big_tree'
 
 
+##------------------------------------------------------
+## DATE FUNCTIONS
+##------------------------------------------------------
+humanizeDuration() {
+  [[ "$1" == "" ]] && { echo "humanizeDuration(): requires date parameter." && return 0; }
+  moment="/Users/frankg/.nvm/v0.8.18/lib/node_modules/moment/moment"
+  humanizedDate=$( node -e "var moment = require('$moment'); console.log( moment( process.argv[1] ).fromNow() );" "$1" )
+  echo $humanizedDate
+}
 
 ##------------------------------------------------------
 ##  DEV FUNCTIONS
@@ -50,8 +60,8 @@ finder() {
 ##
 showdir() {
     local path=""
-    if [[ "$1" != "" && "$2" != "" ]]; then 
-      path="$1/$2*" 
+    if [[ "$1" != "" && "$2" != "" ]]; then
+      path="$1/$2*"
     elif [[ "$1" != "" ]]; then
       path="$1*"
     fi
@@ -100,6 +110,11 @@ fuzzy_find() {
 
 }
 
+## big_tree - show tree of all-cap directories
+##
+big_tree () {
+  find . -type d | perl -ne 'print if /^[._\/A-Z]+$/; '
+}
 
 
 ## dir_story - summarize dirs using readme files
