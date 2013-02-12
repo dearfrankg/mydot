@@ -18,20 +18,24 @@
 
 
 
+#---------------------------------------------
+# COFFEESCRIPT
+#---------------------------------------------
+alias cs='coffee '
 
 
 #---------------------------------------------
 # NODE.JS
 #---------------------------------------------
 
-# nvm - node management tool
-#
+# nvm - node management
+################################################
 #   https://github.com/creationix/nvm
 #   handles managing node in a user environment
 [[ -s /Users/frankg/.nvm/nvm.sh ]] && . /Users/frankg/.nvm/nvm.sh
 
 # bash-completion auto-generated stuff
-#
+################################################
 # {{{
 # Node Completion - Auto-generated, do not touch.
 shopt -s progcomp
@@ -41,7 +45,16 @@ for f in $(command ls ~/.node-completion); do
 done
 # }}}
 
+##
+## NPM
+##
+
+alias npm='npm -q '
+alias npmgi='npm -g install '
+alias npmi='npm install '
+
 # npml - list installed global modules
+################################################
 #
 npml() {
   NODE_HOME=$(dirname $( dirname $(which node)))
@@ -52,7 +65,6 @@ npml() {
   done
 }
 
-alias npm='npm -q '
 
 
 

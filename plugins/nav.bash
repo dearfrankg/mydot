@@ -11,7 +11,7 @@
 #-------------------------------------------------------------------------
 alias dg='deep_go'
 alias pg='proj_go'
-alias prl='proj_list'
+alias pl='proj_list'
 
 
 
@@ -33,6 +33,8 @@ proj_list() {
     )
 
   clear
+  line="-----------------------------------------------------------------------"
+  printf "%-30s %s \n%s\n" "PROJECT NAME" "DESCRIPTION" "$line"
   for f in $list
   do
     projectDir=$(dirname $f)
@@ -40,9 +42,9 @@ proj_list() {
     readmeFile="$proj/$projectDir/readme.md"
 
     [[ -f "$readmeFile" ]] && readme=$(head -n 1 $readmeFile) || readme=""
-    printf "%-30s: %s \n" "$projectName" "$readme"
-
+    printf "%-30s %s \n" "$projectName" "$readme"
   done
+  echo $line
 
 }
 

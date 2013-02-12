@@ -40,6 +40,10 @@ sweep () {
 
 version() { 
   cmd="$1"
-  $cmd --version
+  if [[ "$1" == "java" ]]; then
+    $cmd -version
+  else    
+    $cmd --version
+  fi
 }
 

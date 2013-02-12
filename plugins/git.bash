@@ -4,22 +4,28 @@
 #
 ########################################################################
 
+#=======================================================
+# Git Related Aliases
+#=======================================================
+alias git="hub"         # hub tool
+alias gl='git lg'
+alias ghr="gh_repos"
 
 
 
 
+#=======================================================
 # github cli
-
-alias ghrepos="$gh_curl $gh_url | json -a name updated_at"
-
+#=======================================================
 
 gh_curl="curl -s -u dearfrankg:frankg "
 gh_url=" https://api.github.com/users/dearfrankg/repos "
-
 gh_repos() {
   cmd=" $gh_curl $gh_url "
   data=$($cmd | json -a name updated_at )
   local odd=1
+  clear
+  printf "%-20s %s\n-----------------------------------------------\n" "REPO" "LAST UPDATED"
   for l in $data
   do
     if [[ "$odd" == "1" ]]; then
@@ -36,15 +42,6 @@ gh_repos() {
 }
 
 
-
-
-
-
-
-# this is for the hub tool
-alias git=hub
-
-alias gl='git lg'
 
 #-------------------------------------------------------------------------
 # Save repo changes

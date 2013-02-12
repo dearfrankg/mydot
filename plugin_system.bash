@@ -11,7 +11,7 @@
 ################################################
 
 
-alias pl='plugin_list'
+alias pll='plugin_list'
 alias pe='plugin_edit'
 alias pd='plugin_dir'
 
@@ -40,14 +40,14 @@ plugin_load_all() {
 
 ## goto plugin directory
 ##
-plugin_dir () { 
+plugin_dir () {
   cd $DEFAULT_LIST
 }
 
 
 ## list plugins
 ##
-plugin_list () { 
+plugin_list () {
   ll $DEFAULT_LIST
 }
 
@@ -62,7 +62,14 @@ plugin_edit() {
   local file_regex="$1"
   file=$(fuzzy_find $DEFAULT_LIST $file_regex)
 
-  vi $file; source $file
+  # no files matched - ask to create
+  if [[ "$file" == "" ]]; then
+    yesno "create file: $file_regex" || return 0;
+    file="$MYBASH/plugins/$file_regex.bash"
+  fi
+
+
+  vi $file; source $file; save_repo_changes $MYBASH
 
 }
 
@@ -70,6 +77,6 @@ plugin_edit() {
 ########################################################
 
 #------------------
-# load on start 
+# load on start
 #------------------
 plugin_load_all
