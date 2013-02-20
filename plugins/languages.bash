@@ -97,8 +97,9 @@ source $(rvm 1.9.3 do rvm env --path)
 #---------------------------------------------
 
 # perlbrew
-source ~/perl5/perlbrew/etc/bashrc
-
+# both lines are required
+export PERLBREW_ROOT="$HOME/.perl5"
+source $HOME/.perl5/etc/bashrc
 
 
 

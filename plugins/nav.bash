@@ -9,6 +9,7 @@
 #-------------------------------------------------------------------------
 # new filter commands
 #-------------------------------------------------------------------------
+alias ds='dir_story'
 alias dg='deep_go'
 alias pg='proj_go'
 alias pl='proj_list'
@@ -41,7 +42,7 @@ proj_list() {
     projectName=$(basename $projectDir)
     readmeFile="$proj/$projectDir/readme.md"
 
-    [[ -f "$readmeFile" ]] && readme=$(head -n 1 $readmeFile) || readme=""
+    [[ -f "$readmeFile" ]] && readme=$( grep '^[A-Z]' $readmeFile | head -n 1 ) || readme=""
     printf "%-30s %s \n" "$projectName" "$readme"
   done
   echo $line

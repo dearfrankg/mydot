@@ -5,6 +5,15 @@
 ##
 ##--------------------------------------------------
 
+
+
+# BASH SYSTEM LOADING FLOW
+#
+#   1) GBASH => SOURCE UBASH 
+#   2) $HOME/.bash_profile => SOURCE LBASH => SOURCE PBASH
+#
+
+
 ##--------------------------------------------------
 ## GLOBAL SETTINGS
 ##--------------------------------------------------
@@ -60,8 +69,7 @@ if [[ $(id -un) == "frankg" ]]; then
 
   source $MYBASH/plugins/git.bash
   isFunction git_parse_branch && 
-  export PS1="\[\e[0;31m\]\u@\h:\[\e[0;32m\]\W\[\e[0;34m\]\$(git_parse_branch)\[\e[00m\]$" ||  # git prompt
-  export PS1="\[\e[0;31m\]\u@\h:\[\e[0;32m\]\W\[\e[0;34m\]\[\e[00m\]$"                         # normal prompt
+  export PS1="\[\e[0;31m\]\u@\h:\[\e[0;32m\]\W\[\e[0;34m\]\$(git_parse_branch)\[\e[00m\]$"  # git prompt
 
 fi
 

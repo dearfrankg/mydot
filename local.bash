@@ -20,7 +20,7 @@
 
     MY_LIB=$HOME/dev/lib
     MY_CODE=$HOME/dev/code
-    proj=$MY_CODE/lab
+    proj=$MY_CODE
     review=$MY_CODE/review
 
 

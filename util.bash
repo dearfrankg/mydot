@@ -124,12 +124,20 @@ dir_story() {
   echo '-----------------------------------------------------------'
   for d in $(get_dirs)
   do
-    local file="$d/README.md"
-    local file_lower="$d/readme.md"
+    readme1="$d/.readme.md"
+    readme2="$d/readme.md"
+    readme3="$d/README.md"
+    local file=""
+    if [[ -f "$readme1" ]]; then
+      file="$readme1"
+    elif [[ -f "$readme2" ]]; then
+      file="$readme2"
+    else [[ -f "$readme3" ]]
+      file="$readme3"
+    fi
+
     if [[ -f "$file" ]]; then
-      printf "% 40s:  %s \n" $d "`head -1 $file`"
-    elif [[ -f "$file_lower" ]]; then
-      printf "% 40s:  %s \n" $d "`head -1 $file_lower`"
+      printf "% 40s:  %s \n" $d "`  grep '^[A-Z]' $file | head -n 1   `"
     fi
   done
   echo '-----------------------------------------------------------'
