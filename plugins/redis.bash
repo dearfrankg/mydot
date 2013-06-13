@@ -19,4 +19,4 @@ Or, if you don't want/need launchctl, you can just run:
 
 end
 
-alias startr_redis=' redis-server /usr/local/etc/redis.conf '
+alias start_redis=' redis-server /usr/local/etc/redis.conf '
