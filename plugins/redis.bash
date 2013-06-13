@@ -1,7 +1,7 @@
 
 # REDIS
 
-print  <<'
+echo <<'end' > /dev/null
 
 frankg@mbp:dmo (master)$brew install redis
 ==> Downloading http://redis.googlecode.com/files/redis-2.6.13.tar.gz
@@ -17,7 +17,6 @@ Or, if you don't want/need launchctl, you can just run:
 ==> Summary
 🍺  /usr/local/Cellar/redis/2.6.13: 9 files, 752K, built in 15 seconds
 
-' 2>&1 /dev/null
+end
 
-# dhidhd
-
+alias startr_redis=' redis-server /usr/local/etc/redis.conf '
