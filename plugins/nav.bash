@@ -86,7 +86,11 @@ ncache_set () {
 
 ncache_clear () {
   str="$1"
-  sqlite "$nav_db" "delete from cache"
+  if [[ "$str" == "" ]]; then
+    echo "ncache_clear(): missing param";
+    return
+  fi
+  sqlite "$nav_db" "delete from cache where path like \"%$str%\""
 }
 
 
@@ -100,7 +104,6 @@ proj_go () {
 
   # try cache
   local dir=$( ncache_search $partial | head -n 1 )
-  echo "DIR: $dir"
   if [[ -d $dir ]]; then
     cd $dir
     splash

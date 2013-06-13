@@ -12,4 +12,13 @@ heroku_create_meteor() {
 }
 
 
+#-----------------------------------
+# Kill a local meteor app
+#-----------------------------------
+
+# ps aux | grep node 
+# kill <pid>  # the pid matching the meteor command with --port
+
+# ps aux | grep meteor
+# kill <pid>   # the pid of the mongo process
 

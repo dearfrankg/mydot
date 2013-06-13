@@ -25,7 +25,7 @@ gh_repos() {
   data=$($cmd | json -a name updated_at )
   local odd=1
   clear
-  printf "%-20s %s\n-----------------------------------------------\n" "REPO" "LAST UPDATED"
+  printf "%-40s %s\n----------------------------------------------------------------------\n" "REPO" "LAST UPDATED"
   for l in $data
   do
     if [[ "$odd" == "1" ]]; then
@@ -35,7 +35,7 @@ gh_repos() {
       odd=1
       date=$l
       fdate=$(humanizeDuration $date)
-      printf "%-20s %s\n" "$name" "$fdate"
+      printf "%-40s %s\n" "$name" "$fdate"
     fi
   done
 

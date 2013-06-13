@@ -49,7 +49,6 @@ done
 ## NPM
 ##
 
-alias npm='npm -q '
 alias npmgi='npm -g install '
 alias npmi='npm install '
 
