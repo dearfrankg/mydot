@@ -100,7 +100,7 @@ proj_go () {
   cd $proj
   partial="$1"
   # goto default project directory unless partial param
-  [[ "$partial" == "" ]] && { ll; splash; return 0; }
+  [[ "$partial" == "" ]] && { clear; ls *; return 0; }
 
   # try cache
   local dir=$( ncache_search $partial | head -n 1 )

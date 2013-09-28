@@ -12,10 +12,15 @@ nginx_set_symlink () {
   [[ "$1" == "" ]] && { echo "nginx_set_symlink (): requires a path parameter"; return 0; }
   PUBLIC=~/Sites/public
   rm -f $PUBLIC
-  cmd="ln -s $1 $PUBLIC"
-  #echo $cmd
+
+  echo 55 
+  cmd="ln -v -s $1 $PUBLIC"
+  echo $cmd
   $cmd
-  ll $PUBLIC
+
+
+  ls -l $PUBLIC
+#  ll $PUBLIC
 }
 
 

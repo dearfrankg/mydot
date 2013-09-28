@@ -11,8 +11,7 @@ alias git="hub"         # hub tool
 alias gl='git lg'
 alias ghr="gh_repos"
 
-
-
+alias git-reword-first='echo "git checkout FIRST_COMMIT_SHA && git commit --amend && git rebase HEAD master" '
 
 #=======================================================
 # github cli
@@ -95,6 +94,12 @@ github_repo_exists() {
 git_parse_branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
+
+git_dirty() {
+  git rev-parse --is-inside-work-tree &>/dev/null || return
+  [[ $(git diff --shortstat 2> /dev/null | tail -n1) != "" ]] && echo "*" || echo ""
+}
+
 
 #-------------------------------------------------------------------------
 # easily commit file - git af /path/to/file 'commit message'

@@ -109,17 +109,32 @@ source $HOME/.perl5/etc/bashrc
 # PYTHON
 #---------------------------------------------
 
-# python virtual env support kinda sucks
-#
-# see virtualenv and virtualenvwrapper
-#
-# http://virtualenvwrapper.readthedocs.org/en/latest/#
-#
-# holding off installing anything here until things improve
+  ##
+  ## First install attempt
+  ##
+              # python virtual env support kinda sucks
+              #
+              # see virtualenv and virtualenvwrapper
+              #
+              # http://virtualenvwrapper.readthedocs.org/en/latest/#
+              #
+              # holding off installing anything here until things improve
+
+  ##
+  ## Second install attempt
+  ##
+
+  # config instructions:
+  # http://www.silverwareconsulting.com/index.cfm/2012/7/24/Getting-Started-with-virtualenv-and-virtualenvwrapper-in-Python
+
+export WORKON_HOME=$HOME/.virtualenvs
+source /usr/local/bin/virtualenvwrapper.sh
 
 
-
-
+# mkvirtualenv <name>
+# rmvirtualenv <name>
+# workon [ <name> ]
+# deactivate
 
 
 

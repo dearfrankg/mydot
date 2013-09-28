@@ -14,14 +14,44 @@ export mongolab_api_key="503f0450e4b04102cdfdc589"
 # Commands
 #-----------------------------------------------------------------
 
-# work with mongolab in local console
-alias mongolab='mongo dbh84.mongolab.com:27847/presentations -u frankg -p frankg'
+# This seems bogus 
+mlc () { 
+
+  [[ "$1" == "" ]] && echo "mlc(): need database param" && return
+
+  echo "connecting to $1"
+  mongo dbh86.mongolab.com:27867/$1 -u frankg -p frankg 
+}
+
+
+alias ml-appseed='mongo dbh86.mongolab.com:27867/app-seed -u frankg -p frankg'
+alias ml-crud='mongo ds031597.mongolab.com:31597/angular-crud-demo -u frankg -p frankg'
+alias ml-dmo='mongo ds043977.mongolab.com:43977/dmo -u frankg -p frankg '
+alias lm-presentations='mongo dbh84.mongolab.com:27847/presentations -u frankg -p frankg'
+
+
+alias ml-modus='mongo ds027728.mongolab.com:27728/modus -u frankg -p frankg'
+
+alias ml-aa=' mongo dbh76.mongolab.com:27767/angular-app -u frankg -p frankg'
+
+
+
+alias ml-bpp='mongo ds031607.mongolab.com:31607/bp-production -u frankg -p frankg'
+alias ml-bpd='mongo ds043957.mongolab.com:43957/bp-development -u frankg -p frankg'
+
 
 # show how to restore mongolab from dump
 alias mongo-restore='echo " mongorestore --host dbh84.mongolab.com --port 27847 --username frankg --password frankg --db presentations dump/presentations"'
 
-
-
+alias foo='echo "
+  mongorestore 
+      --host dbh84.mongolab.com 
+      --port 27847 
+      --username frankg 
+      --password frankg 
+      --db presentations dump/presentations
+"
+'
 
 
 #-----------------------------------------------------------------

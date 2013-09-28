@@ -62,7 +62,8 @@
 # Swiss army knife for mongodb
 #------------------------------------------------
 alias mc='mongoctl'
-alias mcs='mc start MyServer'
+alias mcs='mc start MyServer '
+# NOTE: don't bother trying to use the useless built in rest server!!
 alias mcq='mc stop MyServer'
 alias mcst='mc status MyServer'
 alias mcc='mc connect MyServer'
