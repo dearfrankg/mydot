@@ -31,6 +31,7 @@ alias      vimrc="vim $HOME/.vimrc "
 alias  vimbundle="showdir $HOME/.vim/bundle $@ "
 
 # bash
+alias lo="clear; pwd; ls * -G "
 alias ll="clear; pwd; ls -lG "
 alias ls="clear; pwd; ls -G "
 alias la="clear; pwd; ls -alG "
@@ -62,14 +63,15 @@ if [[ $(id -un) == "frankg" ]]; then
   alias  ubash=" vi $UB; . $UB; save_repo_changes $MYBASH "
   alias  pbash=" vi $PB; . $PB; save_repo_changes $MYBASH "
 
-
+  
   ##--------------------------------------------------
   ## PROMPT
   ##--------------------------------------------------
 
   source $MYBASH/plugins/git.bash
   isFunction git_parse_branch && 
-  export PS1="\[\e[0;31m\]\u@\h:\[\e[0;32m\]\W\[\e[0;34m\]\$(git_parse_branch)\[\e[00m\]$"  # git prompt
+  isFunction git_dirty && 
+  export PS1="\[\e[0;31m\]\u@\h:\[\e[0;32m\]\W\[\e[0;34m\]\$(git_parse_branch)\$(git_dirty)\[\e[00m\]$"  # git prompt
 
 fi
 

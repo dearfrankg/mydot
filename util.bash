@@ -73,7 +73,7 @@ showdir() {
       path="$1*"
     fi
     cd $path
-    ll
+    lo
 }
 
 ## path - pretty print $PATH

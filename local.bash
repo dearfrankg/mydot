@@ -11,7 +11,9 @@
 ## SETUP PATH
 ##-------------------------
 
-    export PATH="$PATH:/usr/local/sbin:/usr/X11/bin:$HOME/dev/bin"
+    # NOTE: brew requires /usr/local/bin before /usr/bin
+
+    export PATH="/usr/local/bin:$PATH:/usr/local/sbin:/usr/X11/bin:$HOME/dev/bin"
 
 
 ##-------------------------

@@ -1,9 +1,19 @@
 
 
-# Things for making working with grunt easier
+# Make Grunt easier
 
+
+#
+# Make an angular app
+#
 alias ngb='grunt-init ngb'
 
-alias ngb-install='npm i ; bower install ; grunt build ; open build/index.html '
+
+
+#
+# Make an node-macchiato app
+#
+alias ngb='grunt-init node-macchiato'
+
 
 
