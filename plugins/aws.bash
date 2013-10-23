@@ -12,8 +12,7 @@
 #------------------------------------------------------------------
 # aws
 
-foo=<<END
-
+<<###
 aws 
 
 Setup a new user
@@ -38,7 +37,7 @@ Since I want to keep root more secure I require the .pem file
   ssh -i /Users/frankg/.ssh/mbp.pem root@54.213.55.63
 
 
-END
+###
 
 aws_access () {
   [[ "$1" == "" ]] && echo "need user param" && return;
@@ -60,11 +59,38 @@ aws_access () {
 
 
 
+##-----------
+## BOXPOOL
+##-----------
+#awsroot=' -i /Users/frankg/.ssh/mbp.pem root@54.213.55.63 '
+#aws='ec2-user@54.213.55.63'
+#awsn='node@54.213.55.63'
+## ssh $awsroot
+## ssh $aws
+
+
+
 #-----------
 # BOXPOOL
 #-----------
-awsroot=' -i /Users/frankg/.ssh/mbp.pem root@54.213.55.63 '
-aws='ec2-user@54.213.55.63'
-awsn='node@54.213.55.63'
+AWS_PUBLIC_IP=54.200.138.232
+awsroot=" -i /Users/frankg/.ssh/mbp.pem ubuntu@$AWS_PUBLIC_IP "
+aws="ec2-user@$AWS_PUBLIC_IP"
+awsn="node@$AWS_PUBLIC_IP"
 # ssh $awsroot
 # ssh $aws
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

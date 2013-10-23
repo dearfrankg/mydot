@@ -1,8 +1,9 @@
 #----------------------------------------------
 # REST API NOTES
 #----------------------------------------------
-echo <<'www' > /dev/null
 
+
+<<###
 
 
 
@@ -83,40 +84,8 @@ Confirm sizes as adding bogos data can cause huge problems.
 
 
 
+###
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-www
 
 
 

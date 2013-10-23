@@ -9,6 +9,8 @@
 #=======================================================
 alias git="hub"         # hub tool
 alias gl='git lg'
+alias gll='git llg'
+alias gs='git st'
 alias ghr="gh_repos"
 
 alias git-reword-first='echo "git checkout FIRST_COMMIT_SHA && git commit --amend && git rebase HEAD master" '
