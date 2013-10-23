@@ -1,7 +1,7 @@
 
 # REDIS
 
-<<###
+<<XXX
 
 
 frankg@mbp:dmo (master)$brew install redis
@@ -18,6 +18,6 @@ Or, if you don't want/need launchctl, you can just run:
 ==> Summary
 🍺  /usr/local/Cellar/redis/2.6.13: 9 files, 752K, built in 15 seconds
 
-###
+XXX
 
 alias start_redis=' redis-server /usr/local/etc/redis.conf '

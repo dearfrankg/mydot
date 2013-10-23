@@ -1,7 +1,7 @@
 
 # Working with .dmg image files
 #
-<<###
+<<XXX
 
 Make writeable
 hdiutil convert nameoffile.dmg -format UDRW -o nameoffile_writable.dmg
@@ -18,7 +18,7 @@ hdiutil attach nameoffile_writable.dmg
 
 
 
-###
+XXX
 
 
 

@@ -12,7 +12,7 @@
 #------------------------------------------------------------------
 # aws
 
-<<###
+<<XXX
 aws 
 
 Setup a new user
@@ -37,7 +37,7 @@ Since I want to keep root more secure I require the .pem file
   ssh -i /Users/frankg/.ssh/mbp.pem root@54.213.55.63
 
 
-###
+XXX
 
 aws_access () {
   [[ "$1" == "" ]] && echo "need user param" && return;

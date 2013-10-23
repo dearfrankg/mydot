@@ -2,7 +2,7 @@
 # sublime text 2 & 3 support info 
 
 
-<<###
+<<XXX
 
 
 Installing 3 from scratch
@@ -42,6 +42,6 @@ many do not at this time OCT-2013
 Hold off on text3
 
 
-###
+XXX
 
 

@@ -1,20 +1,20 @@
-<<##############################
+<<XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
     GRUNT-INIT MAKING LIFE EASIER
 
-##############################
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
-<<###
+<<XXX
     NG-BOILERPLATE APP
     -----------------------------------
     ng-boilerplate
 
-###
+XXX
 alias ngb='grunt-init ngb'
 
 
 
-<<###
+<<XXX
     NODE-JASMINE-PLUS
     -----------------------------------
     grunt-init
@@ -23,11 +23,11 @@ alias ngb='grunt-init ngb'
     jasmine-stealth
     jasmine-fixture
     testem
-###
+XXX
 alias njp='grunt-init node-jasmine-plus'
 
 
-<<###
+<<XXX
     NODE-MOCHA-PLUS
     -----------------------------------
     grunt-init
@@ -37,7 +37,7 @@ alias njp='grunt-init node-jasmine-plus'
     sinon.js
     sinon-bdd.js
     testem
-###
+XXX
 alias nmp='grunt-init node-mocha-plus'
 
 
