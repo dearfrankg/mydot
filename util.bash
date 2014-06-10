@@ -282,3 +282,19 @@ prompt() {                          # prompt return $RESPONSE
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 
+
+nuke() {
+
+    dir=$(pwd)
+    echo -e "\n$dir\n"
+
+    yesno 'Nuke the current directory?' &&
+
+    yesno 'Are you sure?!' &&
+
+    echo "nuking $dir" &&
+
+      $( rm -rf $dir/* ; rm -rf $dir/.* ; ) || la
+
+
+}

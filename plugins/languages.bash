@@ -1,59 +1,52 @@
-#
-# This is for supporting language environments
-#
 
-# benefit: avoid messing with system tools
-# benefit: avoid the need to use root power
-# benefit: keep many versions of the language
+# PROGRAMMING LANGUAGE HELP
 
+# - helper functions
+# - virtual env setup scripts
+# - etc.
 
 
 
 
 
-#---------------------------------------------
+# ---------------------------------------------
 # BASH
-#---------------------------------------------
+# installed with OSX
+# ---------------------------------------------
 
 
 
-
-#---------------------------------------------
+# ---------------------------------------------
 # COFFEESCRIPT
-#---------------------------------------------
+# installed with npm    // npm -g install coffee-script
+# ---------------------------------------------
 alias cs='coffee '
 
 
-#---------------------------------------------
+
+# ---------------------------------------------
 # NODE.JS
-#---------------------------------------------
-
-# nvm - node management
-################################################
-#   https://github.com/creationix/nvm
-#   handles managing node in a user environment
-[[ -s /Users/frankg/.nvm/nvm.sh ]] && . /Users/frankg/.nvm/nvm.sh
-
-# bash-completion auto-generated stuff
-################################################
-# {{{
-# Node Completion - Auto-generated, do not touch.
-shopt -s progcomp
-for f in $(command ls ~/.node-completion); do
-  f="$HOME/.node-completion/$f"
-  test -f "$f" && . "$f"
-done
-# }}}
+# installed with nvm
+# ---------------------------------------------
 
 ##
-## NPM
+## NVM
+## setup node in a user environment
+## https://github.com/creationix/nvm
+
+#
+# source nvm commands
+#
+[[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh # This loads NVM
+
+
+##
+## helper functions for npm
 ##
 
-alias npmgi='npm -g install '
-alias npmi='npm install '
-
-# npml - list installed global modules
-################################################
+#
+# npml
+# list installed global modules
 #
 npml() {
   NODE_HOME=$(dirname $( dirname $(which node)))
@@ -67,80 +60,48 @@ npml() {
 
 
 
-
-
-#---------------------------------------------
-# RUBY
-#---------------------------------------------
-
-# rvm - ruby management tool
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-source $(rvm 1.9.3 do rvm env --path)
-[[ -r /scripts/completion ]] && source /scripts/completion
-
-# rvm help
-#
-#    list installed    rvm list
-#    list available    rvm list known
-#    install           rvm install 9.3.1-head
-#    uninstall         rvm uninstall 9.3.1
-#
-#
-
-
-
-
-
-#---------------------------------------------
-# PERL
-#---------------------------------------------
-
-# perlbrew
-# both lines are required
-export PERLBREW_ROOT="$HOME/.perl5"
-source $HOME/.perl5/etc/bashrc
-
-
-
-
-
-
-#---------------------------------------------
-# PYTHON
-#---------------------------------------------
-
-  ##
-  ## First install attempt
-  ##
-              # python virtual env support kinda sucks
-              #
-              # see virtualenv and virtualenvwrapper
-              #
-              # http://virtualenvwrapper.readthedocs.org/en/latest/#
-              #
-              # holding off installing anything here until things improve
-
-  ##
-  ## Second install attempt
-  ##
-
-  # config instructions:
-  # http://www.silverwareconsulting.com/index.cfm/2012/7/24/Getting-Started-with-virtualenv-and-virtualenvwrapper-in-Python
-
-export WORKON_HOME=$HOME/.virtualenvs
-source /usr/local/bin/virtualenvwrapper.sh
-
-
-# mkvirtualenv <name>
-# rmvirtualenv <name>
-# workon [ <name> ]
-# deactivate
-
-
-
-#---------------------------------------------
+# ---------------------------------------------
 # JAVA
-#---------------------------------------------
+# installed jan-2014, with Oracle package installer
+# http://goo.gl/TfUlf
+# ---------------------------------------------
+
+
+
+# ---------------------------------------------
+# RUBY
+
+#   rvm - the ruby virtual environment
+
+#   install rvm       // \curl -sSL https://get.rvm.io | bash -s stable
+#   install ruby      // rvm install 2.1.0                  (password may be required)
+#   use ruby          // rvm use 2.1.0 --default
+#   confirm           // ruby -v
+
+#   optional install compass
+#                     // gem update --system
+#                     // gem install compass
+#                     // # Downgrade sass because of an issue
+#                     // gem uninstall sass --version 3.3.0.rc.2
+#                     // gem install sass --version 3.2.13
+#                     // compass -v # Working :)
+
+# ---------------------------------------------
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+
+
+# ---------------------------------------------
+# PYTHON
+# no virtual env setup
+# ---------------------------------------------
+
+
+
+# ---------------------------------------------
+# PERL
+# no virtual env setup
+# ---------------------------------------------
 
 
 
@@ -150,6 +111,74 @@ source /usr/local/bin/virtualenvwrapper.sh
 
 
 
+# OLD STUFF BELOW
+
+
+
+##
+## Ruby Perl and Python disabled for now
+##
+
+
+# #---------------------------------------------
+# # RUBY
+# #---------------------------------------------
+
+# # rvm - ruby management tool
+# PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+# source $(rvm 1.9.3 do rvm env --path)
+# [[ -r /scripts/completion ]] && source /scripts/completion
+
+# # rvm help
+# #
+# #    list installed    rvm list
+# #    list available    rvm list known
+# #    install           rvm install 9.3.1-head
+# #    uninstall         rvm uninstall 9.3.1
+# #
+# #
+
+
+# #---------------------------------------------
+# # PERL
+# #---------------------------------------------
+
+# # perlbrew
+# # both lines are required
+# export PERLBREW_ROOT="$HOME/.perl5"
+# source $HOME/.perl5/etc/bashrc
+
+
+# #---------------------------------------------
+# # PYTHON
+# #---------------------------------------------
+
+#   ##
+#   ## First install attempt
+#   ##
+#               # python virtual env support kinda sucks
+#               #
+#               # see virtualenv and virtualenvwrapper
+#               #
+#               # http://virtualenvwrapper.readthedocs.org/en/latest/#
+#               #
+#               # holding off installing anything here until things improve
+
+#   ##
+#   ## Second install attempt
+#   ##
+
+#   # config instructions:
+#   # http://goo.gl/0O6Zd
+
+# export WORKON_HOME=$HOME/.virtualenvs
+# source /usr/local/bin/virtualenvwrapper.sh
+
+
+# # mkvirtualenv <name>
+# # rmvirtualenv <name>
+# # workon [ <name> ]
+# # deactivate
 
 
 

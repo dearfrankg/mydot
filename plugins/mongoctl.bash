@@ -1,54 +1,107 @@
 
-#------------------------------------------------
-# mongoctl
-#------------------------------------------------
+#     NAME:
+
+#         mongoctl - Manage MongoDB servers and replica sets using JSON configurations!
+
+
+#     INSTALL and CONFIGURE
+
+#         web page:
+
+#             - https://github.com/mongolab/mongoctl
+
+
+#         Installing mongoctl
+
+
+
+#             Dependency:
+
+#                 - pip   // https://github.com/mongolab/mongoctl/blob/master/docs/installing-pip.md
+
+
+#                 cd /tmp
+#                 git clone https://github.com/pypa/pip.git
+#                 cd pip
+#                 sudo python setup.py install
+
+
+
+
+#             mongoctl is registered in the Python package index pypi.
+
+#             To install
+#             % sudo pip install mongoctl
+#             % mongoctl install-mongodb
+
+#             To update:
+#             % sudo pip install --upgrade mongoctl
+
+#             To uninstall:
+#             % mongoctl uninstall-mongodb
+#             % sudo pip uninstall mongoctl
+
+
+
+
+
+#     USAGE:
+
+#         mc arg  // mongoctl command
+#         mcst    // check status
+#         mcs     // start MongoDB
+#         mcq     // quit MongoDB
+#         mcc     // start mongodb console
+
+
+
+
+
+#-------------------------------------------------
 #
+#       BELOW IS VARIOUS DB PROCESSES
+#
+#-------------------------------------------------
+
+
+
+# mongoctl
+# --------------------
+
 #     ................................
 #     find array length
-#
+
 #     db.events.find({ $where: "this.fights.length == 0" }).count()
 #     # note all docs must have array
-#
+
 #     ................................
 #     find field length
-#
+
 #     db.cache({ $where: "this.value < 100" }).count()
 #     # note all docs must have the field
-#
+
 #     ................................
 #     update all
-#
+
 #     db.events.update({}, {$set: {fights: []}}, {multi: true})
-#
-#
-#
-#
+
+
+
+
 #     ................................
-#     use functions 
-#
+#     use functions
+
 #     function showEvents() { return db.events.find() }
-#
+
 #     later...
 #     showEvents()
-#
-#
-#
+
+
+
 #     ................................
 #     Does field exist
-#
+
 #     db.cache.find( { value: { $exists: true }} )
-#
-#
-#
-#
-#
-#
-#
-#
-
-
-
-
 
 
 

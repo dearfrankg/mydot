@@ -1,8 +1,7 @@
-#!/bin/bash -f
 
-##
-## NAV MODULE make it easier to navigate directories
-##
+# NAV MODULE make it easier to navigate directories
+
+
 
 
 

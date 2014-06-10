@@ -1,7 +1,6 @@
 
-##-------------------------
-## MONGOLAB
-##-------------------------
+
+# MONGOLAB
 
 
 # keys and passwords
@@ -14,13 +13,13 @@ export mongolab_api_key="503f0450e4b04102cdfdc589"
 # Commands
 #-----------------------------------------------------------------
 
-# This seems bogus 
-mlc () { 
+# This seems bogus
+mlc () {
 
   [[ "$1" == "" ]] && echo "mlc(): need database param" && return
 
   echo "connecting to $1"
-  mongo dbh86.mongolab.com:27867/$1 -u frankg -p frankg 
+  mongo dbh86.mongolab.com:27867/$1 -u frankg -p frankg
 }
 
 
@@ -44,11 +43,11 @@ alias ml-bpd='mongo ds043957.mongolab.com:43957/bp-development -u frankg -p fran
 alias mongo-restore='echo " mongorestore --host dbh84.mongolab.com --port 27847 --username frankg --password frankg --db presentations dump/presentations"'
 
 alias foo='echo "
-  mongorestore 
-      --host dbh84.mongolab.com 
-      --port 27847 
-      --username frankg 
-      --password frankg 
+  mongorestore
+      --host dbh84.mongolab.com
+      --port 27847
+      --username frankg
+      --password frankg
       --db presentations dump/presentations
 "
 '
@@ -58,15 +57,15 @@ alias foo='echo "
 # Dates, JSON, Mongo
 #-----------------------------------------------------------------
 
-# js Date works in local time 
+# js Date works in local time
 # date = new Date()
 #    Thu Mar 14 2013 01:28:26 GMT-0700 (PDT)
 #
-# js toJSON converts to UTC time 
+# js toJSON converts to UTC time
 # jsonDate = date.toJSON()
 #    "2013-03-14T08:27:57.655Z"
 #
-# js Date converts JSON back to local time 
+# js Date converts JSON back to local time
 # new Date(jsonDate)
 #    Thu Mar 14 2013 01:28:26 GMT-0700 (PDT)
 

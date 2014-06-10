@@ -28,12 +28,14 @@ plugin_load_all() {
   [[ $list == "" ]] && list="$DEFAULT_LIST"
   list="$list/*"
 
+  foo=0
   for p in $list
   do
     if [[ -f "$p" ]]; then
       # source the plugin
-#       echo "loading plugin $p"
-       source $p
+      foo=$(($foo + 1))
+      #echo "$foo loading plugin $(basename $p)"
+      source $p
     fi
   done
 }

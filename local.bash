@@ -41,16 +41,6 @@
     alias    downloads='showdir ~/Downloads '
 
 
-    alias         pd="perldoc"
-    alias         pf="plackfile "
-    alias         sl="sqlite3 "
-    alias  img-optim="open -a ImageOptim $@"
-
-    alias      vocab='vi "/Users/frankg/Documents/3GB PERSONAL DATA/pdev/vocab/vocab.md" '
-    alias   get_enyo=" cp -r $MY_LIB/js/bootplate/enyo . "
-    alias      sysls='sudo launchctl list | grep -v "apple" | grep -v "chrome" | sort'
-    alias        ngx='sudo vi /usr/local/etc/nginx/nginx.conf'
-
 
 ##-------------------------
 ## LOAD PLUGINS

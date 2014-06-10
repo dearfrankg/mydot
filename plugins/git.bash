@@ -1,8 +1,26 @@
-########################################################################
-#
-# git related functions
-#
-########################################################################
+
+# Git related things
+# ------------------------------
+
+# INSTALL
+
+#     install git         // brew install git             (overrides apple git)
+
+
+# Extensions:
+
+#     - hub: MAKES GIT BETTER WITH GITHUB  (http://hub.github.com/)
+
+#         brew install hub
+
+#     - git-extras: GIT utilities  (https://github.com/visionmedia/git-extras)
+
+#         npm -g i git-extras
+
+
+
+
+
 
 #=======================================================
 # Git Related Aliases
