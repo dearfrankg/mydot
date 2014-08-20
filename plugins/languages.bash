@@ -45,17 +45,19 @@ alias cs='coffee '
 ##
 
 #
-# npml
 # list installed global modules
 #
-npml() {
-  NODE_HOME=$(dirname $( dirname $(which node)))
-  NPM_HOME="$NODE_HOME/lib/node_modules"
-  for f in $(ls $NPM_HOME)
-  do
-    echo $f
-  done
-}
+alias npml='npm list --depth=0'
+
+## THIS IS NOW DEPRECATED
+# npml() {
+#   NODE_HOME=$(dirname $( dirname $(which node)))
+#   NPM_HOME="$NODE_HOME/lib/node_modules"
+#   for f in $(ls $NPM_HOME)
+#   do
+#     echo $f
+#   done
+# }
 
 
 
@@ -87,7 +89,8 @@ npml() {
 #                     // compass -v # Working :)
 
 # ---------------------------------------------
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+### DO NOT UNCOMMENT
+# [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 
 
@@ -112,7 +115,8 @@ npml() {
 
 
 # OLD STUFF BELOW
-
+###################################
+##################################
 
 
 ##
@@ -125,8 +129,7 @@ npml() {
 # #---------------------------------------------
 
 # # rvm - ruby management tool
-# PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-# source $(rvm 1.9.3 do rvm env --path)
+# source $(rvm ruby-2.1.2 do rvm env --path)
 # [[ -r /scripts/completion ]] && source /scripts/completion
 
 # # rvm help

@@ -39,7 +39,7 @@ alias env='env | sort  '
 
 export PS1="\[\e[0;31m\]\u@\h:\[\e[0;32m\]\W\[\e[0;34m\]\[\e[00m\]$"                         # normal prompt
 
-if [[ $(id -un) == "frankg" ]]; then
+if [[ $(id -un) == "fguti7177561" ]]; then
 
   MYBASH="$HOME/.bash_custom"
   GB="$MYBASH/global.bash"

@@ -33,8 +33,8 @@
 
 
 
-alias nginx-cfg="subl /usr/local/etc/nginx/sites-enabled"
-alias nginx-conf="sudo subl /usr/local/etc/nginx/nginx.conf"
+alias nginx-conf="sudo subl /usr/local/etc/nginx"
+alias nginx-goconf="cd /usr/local/etc/nginx"
 alias nginx-start="sudo nginx"
 alias nginx-quit="sudo nginx -s quit"
 alias nginx-reload="sudo nginx -s reload"
